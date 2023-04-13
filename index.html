@@ -46,6 +46,20 @@
         body.loaded>div.preloader {
             animation: hidePreloader .5s linear .5s forwards;
         }
+		
+		.video-container {
+		  width: 100%;
+		  position: relative;
+		  padding-bottom: 75%;
+		}
+		
+		.video-container video {
+		  width: 100%;
+		  height: 100%;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		}
     </style>
     <script>
         window.addEventListener("load", function() {
@@ -85,14 +99,11 @@
                     <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
                         <div class="dropdown-menu dropdown-menu-single">
-                            <a href="https://ghzh26252.github.io/" class="dropdown-item">墙外 GitHub Pages</a>
-                            <a href="http://yanbing.space:8888/" class="dropdown-item">墙内镜像</a>
+                            <a href="https://ghzh26252.github.io/" class="dropdown-item">墙外</a>
+                            <a href="http://yanbing.space:8888/" class="dropdown-item">墙内</a>
                         </div>
                     </li>
                     </li>
-					<li class="nav-item ">
-					    <a class="nav-link" href="index.html">Video</a>
-					</li>
                     <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">WebGL</a>
                         <div class="dropdown-menu dropdown-menu-single">
@@ -184,6 +195,93 @@
             </div>
         </div>
     </section>
+	<section class="slice slice-lg pt-lg-6 pb-0 pb-lg-6 bg-section-secondary">
+	    <div class="container">
+	        <!-- Title -->
+	        <!-- Section title -->
+	        <div class="row mb-5 justify-content-center text-center">
+	            <div class="col-lg-6">
+	                <span class="badge badge-soft-warning badge-pill badge-lg">
+	                    Viedo
+	                </span>
+	                <h2 class=" mt-4">视频片段</h2>
+	            </div>
+	        </div>
+	        <!-- Card -->
+	        <div class="row mt-5">
+	            <div class="col-md-4">
+	                <div class="card">
+	                    <div class="card-body pb-5">
+							<div class="pt-4 pb-5">
+								<div class="video-container">
+									<video controls>
+									  <source src="/Videos/380AT司机台.webm" type="video/webm">
+									</video>
+								</div>
+	                        </div>
+	                        <h5 class="h4 lh-130 mb-3">CRH380AT司机室</h5>
+	                    </div>
+	                </div>
+	            </div>
+				<div class="col-md-4">
+				    <div class="card">
+				        <div class="card-body pb-5">
+							<div class="pt-4 pb-5">
+								<div class="video-container">
+									<video controls>
+									  <source src="/Videos/380B蓄电池箱.webm" type="video/webm">
+									</video>
+								</div>
+				            </div>
+				            <h5 class="h4 lh-130 mb-3">CRH380B蓄电池箱</h5>
+				        </div>
+				    </div>
+				</div>
+				<div class="col-md-4">
+				    <div class="card">
+				        <div class="card-body pb-5">
+				            <div class="pt-4 pb-5">
+				            	<div class="video-container">
+				            		<video controls>
+				            		  <source src="/Videos/ClothWater.webm" type="video/webm">
+				            		</video>
+				            	</div>
+				            </div>
+				            <h5 class="h4 lh-130 mb-3">Obi液体打湿布料</h5>
+				        </div>
+				    </div>
+				</div>
+				<div class="col-md-4">
+				    <div class="card">
+				        <div class="card-body pb-5">
+				            <div class="pt-4 pb-5">
+				            	<div class="video-container">
+				            		<video controls>
+				            		  <source src="/Videos/WindCloth.webm" type="video/webm">
+				            		</video>
+				            	</div>
+				            </div>
+				            <h5 class="h4 lh-130 mb-3">Obi风吹书页</h5>
+				        </div>
+				    </div>
+				</div>
+				<div class="col-md-4">
+				    <div class="card">
+				        <div class="card-body pb-5">
+				            <div class="pt-4 pb-5">
+				            	<div class="video-container">
+				            		<video controls>
+				            		  <source src="/Videos/Digit.webm" type="video/webm">
+				            		</video>
+				            	</div>
+				            </div>
+				            <h5 class="h4 lh-130 mb-3">仿真Digit传感器</h5>
+				        </div>
+				    </div>
+				</div>
+	        </div>
+	    </div>
+	</section>
     <section class="slice slice-lg">
         <div class="container">
             <div class="row">
@@ -206,7 +304,7 @@
                             <div>
                                 <span class="h6">C#</span>
                                 <p class="text-sm text-muted mb-0">
-                                    熟练语法 & Unity API
+                                    Unity API
                                 </p>
                             </div>
                         </div>
@@ -240,7 +338,7 @@
                             <div>
                                 <span class="h6">Shader</span>
                                 <p class="text-sm text-muted mb-0">
-                                    熟练ShaderGraph/ASE
+                                    ShaderGraph/ASE
                                 </p>
                             </div>
                         </div>
@@ -255,10 +353,10 @@
                                 </div>
                             </div>
                             <div>
-                                <span class="h6">3DsMax
+                                <span class="h6">3Ds Max
 								</span>
                                 <p class="text-sm text-muted mb-0">
-                                    擅长仿真模型建模
+                                    仿真建模
                                 </p>
                             </div>
                         </div>
@@ -275,7 +373,7 @@
                             <div>
                                 <span class="h6">Substance Pointer</span>
                                 <p class="text-sm text-muted mb-0">
-                                    制作PBR贴图
+                                    PBR贴图
                                 </p>
                             </div>
                         </div>
@@ -312,7 +410,7 @@
                             <div>
                                 <span class="h6">UnityEditor</span>
                                 <p class="text-sm text-muted mb-0">
-                                    编辑器工具开发
+                                    编辑器工具
                                 </p>
                             </div>
                         </div>
