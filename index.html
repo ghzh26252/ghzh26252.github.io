@@ -1,514 +1,450 @@
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="zh" class="scroll-smooth">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Webpixels">
-    <title>YanBing的主页</title>
-    <!-- Preloader -->
-    <style>
-        @keyframes hidePreloader {
-            0% {
-                width: 100%;
-                height: 100%;
-            }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YanBing Personal Homepage - Unity Developer & 3D Modeler">
+    <meta name="author" content="YanBing">
+    <title>YanBing | Unity Developer</title>
 
-            100% {
-                width: 0;
-                height: 0;
-            }
-        }
-
-        body>div.preloader {
-            position: fixed;
-            background: white;
-            width: 100%;
-            height: 100%;
-            z-index: 1071;
-            opacity: 0;
-            transition: opacity .5s ease;
-            overflow: hidden;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        body:not(.loaded)>div.preloader {
-            opacity: 1;
-        }
-
-        body:not(.loaded) {
-            overflow: hidden;
-        }
-
-        body.loaded>div.preloader {
-            animation: hidePreloader .5s linear .5s forwards;
-        }
-		
-		.video-container {
-		  width: 100%;
-		  position: relative;
-		  padding-bottom: 75%;
-		}
-		
-		.video-container video {
-		  width: 100%;
-		  height: 100%;
-		  position: absolute;
-		  top: 0;
-		  left: 0;
-		}
-    </style>
-    <script>
-        window.addEventListener("load", function() {
-            setTimeout(function() {
-                document.querySelector('body').classList.add('loaded');
-            }, 300);
-        });
-    </script>
     <!-- Favicon -->
-    <link rel="icon" href="Images/head.jpg" type="image/png"><!-- Font Awesome -->
-    <link rel="stylesheet" href="assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
-    <!-- Quick CSS -->
-    <link rel="stylesheet" href="assets/css/quick-website.css" id="stylesheet">
+    <link rel="icon" href="Images/head.jpg" type="image/png">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/modern.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <!-- Preloader -->
-   <div class="preloader">
-        <div class="spinner-border text-primary" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+<body class="antialiased min-h-screen relative selection:bg-indigo-500 selection:text-white">
+
+    <!-- Ambient Background Glow -->
+    <div class="bg-gradient-glow">
+        <div class="glow-blob glow-1"></div>
+        <div class="glow-blob glow-2"></div>
+        <div class="glow-blob glow-3"></div>
     </div>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container">
-            <!-- Brand -->
-            <a class="navbar-brand" href="index.html">
-                <img alt="Image placeholder" src="Images/head.jpg" id="navbar-logo">
-            </a>
-            <!-- Toggler -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Collapse -->
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mt-4 mt-lg-0 ml-auto">
-                    <li class="nav-item" data-toggle="hover">
-					    <a class="nav-link" href="https://www.zhihu.com/people/zh-cljm" role="button" aria-haspopup="true" aria-expanded="false">知乎</a>
-					</li>
-                    <li class="nav-item" data-toggle="hover">
-					    <a class="nav-link" href="https://github.com/ghzh26252" role="button" aria-haspopup="true" aria-expanded="false">Github</a>
-					</li>
-                    <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-					    <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Self</a>
-					    <div class="dropdown-menu dropdown-menu-single">
-                            <a href="http://yanbing.space:8088/" class="dropdown-item">Gitlab</a>
-                            <a href="http://yanbing.space:8088/" class="dropdown-item">NAS</a>
-                            <a href="http://yanbing.space:8088/" class="dropdown-item">HA</a>
-					        <a href="http://yanbing.space:8088/" class="dropdown-item">BT</a>
-							<a href="http://yanbing.space:8096/" class="dropdown-item">Jellyfin</a>
-					    </div>
-					</li>
-                </ul>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-glass top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img class="h-10 w-10 rounded-full border-2 border-indigo-500/50" src="Images/head.jpg"
+                        alt="YanBing Logo">
+                    <span
+                        class="text-xl font-bold tracking-tight text-white hover:text-indigo-400 transition-colors">YanBing</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="https://www.zhihu.com/people/zh-cljm" target="_blank"
+                            class="text-gray-300 hover:text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm font-medium transition-all">
+                            <i class="fab fa-zhihu mr-1"></i> 知乎
+                        </a>
+                        <a href="https://github.com/ghzh26252" target="_blank"
+                            class="text-gray-300 hover:text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm font-medium transition-all">
+                            <i class="fab fa-github mr-1"></i> Github
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button data-toggle="navbar" class="text-gray-300 hover:text-white p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="navbar-mobile"
+            class="hidden md:hidden glass-panel mx-4 mt-2 p-2 flex-col space-y-2 absolute w-[calc(100%-2rem)]">
+            <a href="https://www.zhihu.com/people/zh-cljm"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/10">知乎</a>
+            <a href="https://github.com/ghzh26252"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/10">Github</a>
         </div>
     </nav>
-    <!-- Main content -->
-    <section class="slice py-7">
-        <div class="container">
-            <div class="row row-grid align-items-center">
-                <div class="col-12 col-md-5 col-lg-6 order-md-2 text-center">
-                    <!-- Image -->
-                    <figure class="w-100">
-                        <img alt="Image placeholder" src="assets/img/svg/illustrations/illustration-3.svg" class="img-fluid mw-md-80">
-                    </figure>
-                </div>
-                <div class="col-12 col-md-7 col-lg-6 order-md-1 pr-md-5">
-                    <!-- Heading -->
-                    <h1 class="display-4 text-center text-md-left mb-3">
-                        <strong class="text-primary">YanBing</strong>
-                    </h1>
-                    <!-- Text -->
-                    <p class="lead text-center text-md-left text-muted">
-                        一个Unity开发 半个3D建模
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="slice slice-lg pt-lg-6 pb-0 pb-lg-6 bg-section-secondary">
-        <div class="container">
-            <!-- Title -->
-            <!-- Section title -->
-            <div class="row mb-5 justify-content-center text-center">
-                <div class="col-lg-6">
-                    <span class="badge badge-soft-success badge-pill badge-lg">
-                        WebGL Demo
-                    </span>
-                </div>
-            </div>
-            <!-- Card -->
-            <div class="row mt-5">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body pb-5">
-                            <div class="pt-4 pb-5">
-								<a href="CR400AF">
-									<img src="Images/CR400AF.png" class="img-fluid img-center"/>
-								</a>
-                            </div>
-                            <h5 class="h4 lh-130 mb-3"><a href="/CR400AF">CR400AF车厢内漫游</a></h5>
-                            <p class="text-muted mb-0">PC端使用WASD移动</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body pb-5">
-                            <div class="pt-4 pb-5">
-                                <a href="Models">
-                                	<img src="Images/models.png" class="img-fluid img-center"/>
-                                </a>
-                            </div>
-                            <h5 class="h4 lh-130 mb-3"><a href="/Models">实验器材模型</a></h5>
-                            <p class="text-muted mb-0">Addressable动态资源加载，可使用鼠标右键或触屏双指滑动旋转</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body pb-5">
-                            <div class="pt-4 pb-5">
-                                <a href="Scenes">
-                                	<img src="Images/scenes.png" class="img-fluid img-center"/>
-                                </a>
-                            </div>
-                            <h5 class="h4 lh-130 mb-3"><a href="/Scenes">写实室内场景</a></h5>
-                            <p class="text-muted mb-0">Addressable动态资源加载，可使用鼠标右键或触屏双指滑动旋转</p>
-                        </div>
-                    </div>
-                </div>
-				<div class="col-md-4">
-				    <div class="card">
-				        <div class="card-body pb-5">
-				            <div class="pt-4 pb-5">
-				                <a href="QieShuiGuo">
-				                	<img src="Images/QieShuiGuo.png" class="img-fluid img-center"/>
-				                </a>
-				            </div>
-				            <h5 class="h4 lh-130 mb-3"><a href="/QieShuiGuo">切水果小游戏</a></h5>
-				            <p class="text-muted mb-0">使用电脑游玩</p>
-				        </div>
-				    </div>
-				</div>
-				<div class="col-md-4">
-				    <div class="card">
-				        <div class="card-body pb-5">
-				            <div class="pt-4 pb-5">
-				                <a href="https://ghzh26252.github.io/Unity-Replayable-Extension-API/">
-				                	<img src="Images/Replay.png" class="img-fluid img-center"/>
-				                </a>
-				            </div>
-				            <h5 class="h4 lh-130 mb-3"><a href="https://ghzh26252.github.io/Unity-Replayable-Extension-API/">录制API</a></h5>
-				            <p class="text-muted mb-0">基于封装Unity接口实现的录制回放功能</p>
-				        </div>
-				    </div>
-				</div>
-            </div>
-        </div>
-    </section>
-	<section class="slice slice-lg pt-lg-6 pb-0 pb-lg-6 bg-section-secondary">
-	    <div class="container">
-	        <!-- Title -->
-	        <!-- Section title -->
-	        <div class="row mb-5 justify-content-center text-center">
-	            <div class="col-lg-6">
-	                <span class="badge badge-soft-warning badge-pill badge-lg">
-	                    Viedo Demo
-	                </span>
-	            </div>
-	        </div>
-	        <!-- Card -->
-	        <div class="row mt-5">
-	            <div class="col-md-4">
-	                <div class="card">
-	                    <div class="card-body pb-5">
-							<div class="pt-4 pb-5">
-								<div class="video-container">
-									<video controls>
-									  <source src="Videos/380AT司机台.webm" type="video/webm">
-									</video>
-								</div>
-	                        </div>
-	                        <h5 class="h4 lh-130 mb-3">CRH380AT司机室</h5>
-	                    </div>
-	                </div>
-	            </div>
-				<div class="col-md-4">
-				    <div class="card">
-				        <div class="card-body pb-5">
-							<div class="pt-4 pb-5">
-								<div class="video-container">
-									<video controls>
-									  <source src="Videos/380B蓄电池箱.webm" type="video/webm">
-									</video>
-								</div>
-				            </div>
-				            <h5 class="h4 lh-130 mb-3">CRH380B蓄电池箱</h5>
-				        </div>
-				    </div>
-				</div>
-				<div class="col-md-4">
-				    <div class="card">
-				        <div class="card-body pb-5">
-				            <div class="pt-4 pb-5">
-				            	<div class="video-container">
-				            		<video controls>
-				            		  <source src="Videos/ClothWater.webm" type="video/webm">
-				            		</video>
-				            	</div>
-				            </div>
-				            <h5 class="h4 lh-130 mb-3">Obi液体打湿布料</h5>
-				        </div>
-				    </div>
-				</div>
-				<div class="col-md-4">
-				    <div class="card">
-				        <div class="card-body pb-5">
-				            <div class="pt-4 pb-5">
-				            	<div class="video-container">
-				            		<video controls>
-				            		  <source src="Videos/WindCloth.webm" type="video/webm">
-				            		</video>
-				            	</div>
-				            </div>
-				            <h5 class="h4 lh-130 mb-3">Obi风吹书页</h5>
-				        </div>
-				    </div>
-				</div>
-				<div class="col-md-4">
-				    <div class="card">
-				        <div class="card-body pb-5">
-				            <div class="pt-4 pb-5">
-				            	<div class="video-container">
-				            		<video controls>
-				            		  <source src="Videos/Digit.webm" type="video/webm">
-				            		</video>
-				            	</div>
-				            </div>
-				            <h5 class="h4 lh-130 mb-3">仿真Digit传感器</h5>
-				        </div>
-				    </div>
-				</div>
-				<div class="col-md-4">
-				    <div class="card">
-				        <div class="card-body pb-5">
-				            <div class="pt-4 pb-5">
-				            	<div class="video-container">
-				            		<video controls>
-				            		  <source src="Videos/ClothDynamics.webm" type="video/webm">
-				            		</video>
-				            	</div>
-				            </div>
-				            <h5 class="h4 lh-130 mb-3">ClothDynamics穿衣服</h5>
-				        </div>
-				    </div>
-				</div>
-	        </div>
-	    </div>
-	</section>
-    <section class="slice slice-lg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <span class="badge badge-primary badge-pill">我的技能</span>
-                    <h5 class="lh-180 mt-4 mb-6">具备Unity开发完整技术栈</h5>
-                </div>
-            </div>
-            <!-- Features -->
-            <div class="row mx-lg-n4">
-                <!-- Features - Col 1 -->
-                <div class="col-lg-4 col-md-6 px-lg-4">
-                    <div class="card shadow-none">
-                        <div class="p-3 d-flex">
-                            <div>
-                                <div class="icon icon-shape rounded-circle bg-primary text-white mr-4">
-                                    <i data-feather="check"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="h6">C#</span>
-                                <p class="text-sm text-muted mb-0">
-                                    Unity API
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-				<div class="col-lg-4 col-md-6 px-lg-4">
-				    <div class="card shadow-none">
-				        <div class="p-3 d-flex">
-				            <div>
-				                <div>
-				                    <div class="icon icon-shape rounded-circle bg-primary text-white mr-4">
-				                        <i data-feather="check"></i>
-				                    </div>
-				                </div>
-				            </div>
-				            <div>
-				                <span class="h6">UnityEditor</span>
-				                <p class="text-sm text-muted mb-0">
-				                    编辑器工具
-				                </p>
-				            </div>
-				        </div>
-				    </div>
-				</div>
 
-                <div class="col-lg-4 col-md-6 px-lg-4">
-                    <div class="card shadow-none">
-                        <div class="p-3 d-flex">
-                            <div>
-                                <div class="icon icon-shape rounded-circle bg-primary text-white mr-4">
-                                    <i data-feather="check"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="h6">Shader</span>
-                                <p class="text-sm text-muted mb-0">
-                                    ShaderGraph/ASE
-                                </p>
-                            </div>
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 reveal">
+                <span class="block text-white mb-2">Hello, I'm</span>
+                <span class="text-gradient">YanBing</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 reveal delay-100">
+                一个Unity开发 半个3D建模
+            </p>
+            <p class="mt-2 text-sm text-indigo-400 tracking-widest uppercase font-semibold opacity-80 reveal delay-200">
+                Unity Developer & Technical Artist
+            </p>
+
+            <div class="mt-10 flex justify-center gap-4 reveal delay-300">
+                <a href="#demos"
+                    class="px-8 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-lg shadow-indigo-500/30 transition-all hover:-translate-y-1">
+                    View Demos
+                </a>
+                <a href="#skills"
+                    class="px-8 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold backdrop-blur-sm border border-white/10 transition-all hover:-translate-y-1">
+                    My Skills
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- WebGL Demos Section -->
+    <section id="demos" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-indigo-400 font-semibold tracking-wider uppercase text-sm">Portfolio</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">WebGL Demos</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1: CR400AF -->
+                <div class="glass-panel group overflow-hidden reveal">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="Images/CR400AF.png" alt="CR400AF"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <a href="CR400AF"
+                                class="px-6 py-2 bg-white text-black rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                Play Demo
+                            </a>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 px-lg-4">
-                    <div class="card shadow-none">
-                        <div class="p-3 d-flex">
-                            <div>
-                                <div class="icon icon-shape rounded-circle bg-primary text-white mr-4">
-                                    <i data-feather="check"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="h6">3DS Max
-								</span>
-                                <p class="text-sm text-muted mb-0">
-                                    仿真建模
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 px-lg-4">
-                    <div class="card shadow-none">
-                        <div class="p-3 d-flex">
-                            <div>
-                                <div class="icon icon-shape rounded-circle bg-primary text-white mr-4">
-                                    <i data-feather="check"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="h6">Substance Pointer</span>
-                                <p class="text-sm text-muted mb-0">
-                                    PBR贴图
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-				<div class="col-lg-4 col-md-6 px-lg-4">
-				    <div class="card shadow-none">
-				        <div class="p-3 d-flex">
-				            <div>
-				                <div class="icon icon-shape rounded-circle bg-primary text-white mr-4">
-				                    <i data-feather="check"></i>
-				                </div>
-				            </div>
-				            <div>
-				                <span class="h6">Python</span>
-				                <p class="text-sm text-muted mb-0">
-				                    PyPi包发布
-				                </p>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-                <div class="col-lg-4 col-md-6 px-lg-4">
-                    <div class="card shadow-none">
-                        <div class="p-3 d-flex">
-                            <div>
-                                <div class="icon icon-shape rounded-circle bg-primary text-white mr-4">
-                                    <i data-feather="check"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="h6">PhotoShop</span>
-                                <p class="text-sm text-muted mb-0">
-                                    贴图修改
-                                </p>
-                            </div>
-                        </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                            <a href="CR400AF">CR400AF车厢内漫游</a>
+                        </h3>
+                        <p class="text-gray-400 text-sm">PC端使用WASD移动，沉浸式CR400AF动车组体验。</p>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 px-lg-4">
-                    <div class="card shadow-none">
-                        <div class="p-3 d-flex">
-                            <div>
-                                <div>
-                                    <div class="icon icon-shape rounded-circle bg-primary text-white mr-4">
-                                        <i data-feather="check"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="h6">Vray</span>
-                                <p class="text-sm text-muted mb-0">
-                                    效果图渲染
-                                </p>
-                            </div>
+                <!-- Card 2: Models -->
+                <div class="glass-panel group overflow-hidden reveal delay-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="Images/models.png" alt="Models"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <a href="Models"
+                                class="px-6 py-2 bg-white text-black rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                View Models
+                            </a>
                         </div>
                     </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                            <a href="Models">实验器材模型</a>
+                        </h3>
+                        <p class="text-gray-400 text-sm">Addressable动态资源加载，可使用鼠标右键或触屏双指滑动旋转。</p>
+                    </div>
                 </div>
-                <div class="col-lg-4 col-md-6 px-lg-4">
-                    <div class="card shadow-none">
-                        <div class="p-3 d-flex">
-                            <div>
-                                <div>
-                                    <div class="icon icon-shape rounded-circle bg-primary text-white mr-4">
-                                        <i data-feather="check"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="h6">After Effects</span>
-                                <p class="text-sm text-muted mb-0">
-                                    视频剪辑
-                                </p>
-                            </div>
+
+                <!-- Card 3: Scenes -->
+                <div class="glass-panel group overflow-hidden reveal delay-200">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="Images/scenes.png" alt="Scenes"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <a href="Scenes"
+                                class="px-6 py-2 bg-white text-black rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                View Scenes
+                            </a>
                         </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                            <a href="Scenes">写实室内场景</a>
+                        </h3>
+                        <p class="text-gray-400 text-sm">高精度室内渲染，Addressable动态加载技术展示。</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: QieShuiGuo -->
+                <div class="glass-panel group overflow-hidden reveal">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="Images/QieShuiGuo.png" alt="QieShuiGuo"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <a href="QieShuiGuo"
+                                class="px-6 py-2 bg-white text-black rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                Play Game
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                            <a href="QieShuiGuo">切水果小游戏</a>
+                        </h3>
+                        <p class="text-gray-400 text-sm">经典2D游戏复刻，建议使用电脑浏览器游玩。</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: API -->
+                <div class="glass-panel group overflow-hidden reveal delay-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="Images/Replay.png" alt="Replay API"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <a href="https://ghzh26252.github.io/Unity-Replayable-Extension-API/" target="_blank"
+                                class="px-6 py-2 bg-white text-black rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                Read Docs
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                            <a href="https://ghzh26252.github.io/Unity-Replayable-Extension-API/"
+                                target="_blank">录制API</a>
+                        </h3>
+                        <p class="text-gray-400 text-sm">基于Unity接口封装的录制回放功能插件。</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Core JS  -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/svg-injector/dist/svg-injector.min.js"></script>
-    <script src="assets/libs/feather-icons/dist/feather.min.js"></script>
-    <!-- Quick JS -->
-    <script src="assets/js/quick-website.js"></script>
-    <!-- Feather Icons -->
-    <script>
-        feather.replace({
-            'width': '1em',
-            'height': '1em'
-        })
-    </script>
+
+    <!-- Videos Section -->
+    <section class="py-20 bg-black/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-purple-400 font-semibold tracking-wider uppercase text-sm">Showcase</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">Video Demos</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Video 1 -->
+                <div class="glass-panel p-4 reveal">
+                    <div class="video-wrapper mb-4">
+                        <video controls poster="">
+                            <source src="Videos/380AT司机台.webm" type="video/webm">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white">CRH380AT司机室</h4>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="glass-panel p-4 reveal delay-100">
+                    <div class="video-wrapper mb-4">
+                        <video controls>
+                            <source src="Videos/380B蓄电池箱.webm" type="video/webm">
+                        </video>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white">CRH380B蓄电池箱</h4>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="glass-panel p-4 reveal delay-200">
+                    <div class="video-wrapper mb-4">
+                        <video controls>
+                            <source src="Videos/ClothWater.webm" type="video/webm">
+                        </video>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white">Obi液体打湿布料</h4>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="glass-panel p-4 reveal">
+                    <div class="video-wrapper mb-4">
+                        <video controls>
+                            <source src="Videos/WindCloth.webm" type="video/webm">
+                        </video>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white">Obi风吹书页</h4>
+                </div>
+
+                <!-- Video 5 -->
+                <div class="glass-panel p-4 reveal delay-100">
+                    <div class="video-wrapper mb-4">
+                        <video controls>
+                            <source src="Videos/Digit.webm" type="video/webm">
+                        </video>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white">仿真Digit传感器</h4>
+                </div>
+
+                <!-- Video 6 -->
+                <div class="glass-panel p-4 reveal delay-200">
+                    <div class="video-wrapper mb-4">
+                        <video controls>
+                            <source src="Videos/ClothDynamics.webm" type="video/webm">
+                        </video>
+                    </div>
+                    <h4 class="text-lg font-semibold text-white">ClothDynamics穿衣服</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span
+                    class="text-accent-color text-pink-500 font-semibold tracking-wider uppercase text-sm">Expertise</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">Professional Skills</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-pink-500 to-red-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Skill Item -->
+                <div class="glass-panel p-6 flex items-start space-x-4 hover:bg-white/5 transition-colors reveal">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">C#</h4>
+                        <p class="text-gray-400 text-sm mt-1">Unity API Development, advanced scripting patterns.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-panel p-6 flex items-start space-x-4 hover:bg-white/5 transition-colors reveal delay-100">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+                        <i class="fas fa-cube text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">Unity Editor</h4>
+                        <p class="text-gray-400 text-sm mt-1">Editor Tooling, Custom Inspectors, Workflow Automation.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-panel p-6 flex items-start space-x-4 hover:bg-white/5 transition-colors reveal delay-200">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
+                        <i class="fas fa-magic text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">Shader Dev</h4>
+                        <p class="text-gray-400 text-sm mt-1">ShaderGraph, ASE, HLSL Custom Shaders.</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 flex items-start space-x-4 hover:bg-white/5 transition-colors reveal">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400">
+                        <i class="fas fa-shapes text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">3DS Max</h4>
+                        <p class="text-gray-400 text-sm mt-1">Simulation Modeling, Hard surface modeling.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-panel p-6 flex items-start space-x-4 hover:bg-white/5 transition-colors reveal delay-100">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center text-red-400">
+                        <i class="fas fa-paint-brush text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">Substance Painter</h4>
+                        <p class="text-gray-400 text-sm mt-1">PBR Texturing, Material Creation.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-panel p-6 flex items-start space-x-4 hover:bg-white/5 transition-colors reveal delay-200">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                        <i class="fab fa-python text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">Python</h4>
+                        <p class="text-gray-400 text-sm mt-1">Automation Scripts, PyPi Package Publishing.</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 flex items-start space-x-4 hover:bg-white/5 transition-colors reveal">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-800/20 flex items-center justify-center text-blue-300">
+                        <i class="fas fa-image text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">Photoshop</h4>
+                        <p class="text-gray-400 text-sm mt-1">Texture Modification, UI Design Assets.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-panel p-6 flex items-start space-x-4 hover:bg-white/5 transition-colors reveal delay-100">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400">
+                        <i class="fas fa-sun text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">Vray</h4>
+                        <p class="text-gray-400 text-sm mt-1">Photorealistic Rendering, ArchViz.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-panel p-6 flex items-start space-x-4 hover:bg-white/5 transition-colors reveal delay-200">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-800/20 flex items-center justify-center text-purple-300">
+                        <i class="fas fa-film text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">After Effects</h4>
+                        <p class="text-gray-400 text-sm mt-1">Video Editing, Motion Graphics, Post-processing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-black/50 py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://github.com/ghzh26252" class="text-gray-400 hover:text-white transition-colors">
+                    <span class="sr-only">GitHub</span>
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="https://www.zhihu.com/people/zh-cljm"
+                    class="text-gray-400 hover:text-blue-400 transition-colors">
+                    <span class="sr-only">Zhihu</span>
+                    <i class="fab fa-zhihu text-2xl"></i>
+                </a>
+            </div>
+            <p>&copy; 2026 YanBing. All rights reserved.</p>
+            <p class="text-xs mt-2 opacity-50">Designed with Modern WebTech</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
 </body>
+
 </html>
